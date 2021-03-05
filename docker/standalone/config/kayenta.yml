@@ -2,6 +2,8 @@ server:
   port: 8090
 
 kayenta:
+  s3:
+    enabled: true
   aws:
     enabled: true
     accounts:
