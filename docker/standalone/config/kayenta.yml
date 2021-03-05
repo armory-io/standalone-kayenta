@@ -1,0 +1,49 @@
+server:
+  port: 8090
+
+kayenta:
+  aws:
+    enabled: true
+    accounts:
+    - name: minio
+      bucket: kayenta
+      rootFolder: kayenta
+      endpoint: http://minio:9000
+      explicitCredentials:
+        accessKey: minio
+        secretKey: minio123
+      supportedTypes:
+        - OBJECT_STORE
+        - CONFIGURATION_STORE
+
+  standaloneCanaryAnalysis:
+    enabled: true
+
+management.endpoints.web.exposure.include: '*'
+management.endpoint.health.show-details: always
+keiko:
+  queue:
+    redis:
+      queueName: kayenta.keiko.queue
+      deadLetterQueueName: kayenta.keiko.queue.deadLetters
+
+swagger:
+  enabled: true
+  title: Kayenta API
+  description:
+  contact:
+  patterns:
+    - /admin.*
+    - /canary.*
+    - /canaryConfig.*
+    - /canaryJudgeResult.*
+    - /credentials.*
+    - /fetch.*
+    - /health
+    - /judges.*
+    - /metadata.*
+    - /metricSetList.*
+    - /metricSetPairList.*
+    - /metricServices.*
+    - /pipeline.*
+    - /standalone.*
