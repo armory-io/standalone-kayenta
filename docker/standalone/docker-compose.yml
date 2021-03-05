@@ -3,7 +3,13 @@ services:
   redis:
     image: redis:6.2.1
     ports:
-      - "6379:6379" 
+      - "6379:6379"
+  referee:
+    image: armory/referee:v1.2.0
+    ports:
+      - "3001:3001"
+    environment:
+      KAYENTA_BASE_URL: http://kayenta:8090 
   kayenta:
     image: us-docker.pkg.dev/spinnaker-community/docker/kayenta:0.19.0-20201207200017
     ports:
